@@ -1,8 +1,11 @@
 <template>
-  <button @click="activateInstance">Activate Instace</button>
+  <form @submit.prevent="submitForm">
+    <input type="text" v-model="search" placeholder="Search for coins..." />
+    <button v-if="getLength" @click="loadInstance">Load</button>
+  </form>
   <ul class="list-group">
     <list-element
-      v-for="item in coinsStorage"
+      v-for="item in getCoinsBySymbol(search)"
       :id="item.id"
       :key="item.id"
       :name="item.name"
@@ -14,36 +17,38 @@
 <script>
 import binance from "@/helpers/instance.js";
 import ListElement from "../components/ListElement.vue";
-
+import { mapGetters } from "vuex";
 export default {
   components: { ListElement },
+  data() {
+    return {
+      search: "",
+    };
+  },
   computed: {
-    coinsStorage() {
-      return this.$store.getters["getStore"];
-    },
+    ...mapGetters(["getCoinsBySymbol", "getLength"]),
   },
   methods: {
-    activateInstance() {
-      binance
-        .exchangeInfo()
-        .then((response) => {
-          const allItems = response.data;
-          console.log(allItems);
-          const total = allItems.length;
-          console.log(total);
-          for (let i = 0; i < total; i++) {
-            this.$store.dispatch("addToStore", {
-              id: i,
-              name: allItems[i].symbol,
-              price: allItems[i].price,
-            });
-          }
-        })
-        .catch(console.log);
+    loadInstance() {
+      binance.tickerPrice().then((response) => {
+        const allItems = response.data;
+        const total = allItems.length;
+        console.log(total);
+        for (let i = 0; i < total; i++) {
+          this.$store.dispatch("addToStore", {
+            id: i,
+            name: allItems[i].symbol,
+            price: allItems[i].price,
+          });
+        }
+      });
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.invissable {
+  display: none;
+}
 </style>

@@ -8,7 +8,7 @@
         {{ price }}
       </span>
       <span>
-        <button @click="addToHome">Add</button>
+        <button @click="add">add</button>
       </span>
     </div>
   </li>
@@ -18,11 +18,18 @@
 export default {
   props: ["id", "name", "price"],
   data() {
-    return {};
+    return {
+      check: [],
+    };
   },
   methods: {
     addToHome() {
       return 0;
+    },
+    add() {
+      this.$store.dispatch("UserCoins/AddToUsersCoinList", {
+        id: this.id,
+      });
     },
   },
 };

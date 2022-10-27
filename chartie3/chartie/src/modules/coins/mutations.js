@@ -1,5 +1,5 @@
-export default{
-    pushCoin(state, payload){
+export default {
+    pushCoin(state, payload) {
         const coinData = payload;
         const newItem = {
             id: coinData.id,
@@ -7,6 +7,5 @@ export default{
             price: coinData.price,
         };
         state.coins.push(newItem);
-
-    }
+    },
 }

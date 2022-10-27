@@ -1,49 +1,28 @@
 import axios from 'axios'
 
-const serializer = (params) => {
-    const response = []
-    const keys = Object.keys(params)
-    const total = keys.length
-    for (let j = 0; j < total; j++) {
-      const key = keys[j]
-      response.push(`${key}=${encodeURIComponent('["' + params[key].map(value => value.toUpperCase()).join('","') + '"]')}`)
-    }
-  
-    return `${response.join('&')}`
-  }
-
 const instance = axios.create({
   baseURL: 'https://api.binance.com',
-  timeout:5000,
+  timeout: 5000,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
   }
 })
-
-instance.interceptors.response.use(response => ({
-  status: response.status,
-  statusText: response.statusText,
-  data: response.data
-}))
-
 export default {
-  exchangeInfo: (symbols) => instance({
+  tickerPrice: (symbols) => instance({
     method: 'get',
     url: '/api/v3/ticker/price',
     params: {
-      symbol: symbols
-    },
-    paramsSerializer: serializer
-
+      symbols: JSON.stringify(symbols),
+      limit: 150,
+    }
   }),
   klines: (symbol, interval) => instance({
     method: 'get',
-    url: '/api/v3/klines',
+    url: '/api/v3/uiKlines',
     params: {
       symbol: symbol,
       interval: interval,
-      limit: 145
     }
   })
 }
