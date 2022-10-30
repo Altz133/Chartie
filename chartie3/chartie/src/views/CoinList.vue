@@ -1,8 +1,9 @@
 <template>
   <form @submit.prevent="submitForm">
-    <input type="text" v-model="search" placeholder="Search for coins..." />
-    <button v-if="getLength" @click="loadInstance">Load</button>
+    <input type="text" v-model="search" placeholder="Search for coins..."/>
+
   </form>
+  <p v-if="!loaded">Loading...</p>
   <ul class="list-group">
     <list-element
       v-for="item in getCoinsBySymbol(search)"
@@ -23,13 +24,15 @@ export default {
   data() {
     return {
       search: "",
+      loaded: false,
     };
   },
   computed: {
     ...mapGetters(["getCoinsBySymbol", "getLength"]),
   },
-  methods: {
-    loadInstance() {
+
+  async mounted(){
+      this.loaded= false,
       binance.tickerPrice().then((response) => {
         const allItems = response.data;
         const total = allItems.length;
@@ -41,9 +44,9 @@ export default {
             price: allItems[i].price,
           });
         }
+        this.loaded = true
       });
     },
-  },
 };
 </script>
 

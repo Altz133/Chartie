@@ -1,5 +1,5 @@
 <template>
-  <h3>This is default home page</h3>
+ <h3>Welcome</h3>
   <ul class="list-group">
     <home-list-element
       v-for="item in userCoinStorage"

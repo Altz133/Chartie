@@ -14,7 +14,14 @@
 
       </span>
       <span>
-        <chart-component></chart-component>
+        <chart-component :coinName="name" :interval="interval"></chart-component>
+      </span>
+      <span>
+      <button @click = "changeInterval('1s')">1s</button>
+      <button @click = "changeInterval('1m')">1m</button>
+      <button @click = "changeInterval('1h')">1h</button>
+      <button @click = "changeInterval('1d')">1d</button>
+      <button @click = "changeInterval('1w')">1w</button>
       </span>
     </div>
   </li>
@@ -23,6 +30,11 @@
   <script>
 import ChartComponent from "./ChartComponent.vue";
 export default {
+  data(){
+    return{
+      interval: '1h',
+    }
+  },
   components: { ChartComponent },
   props: ["id", "name", "price"],
   methods: {
@@ -31,6 +43,9 @@ export default {
         name: this.name,
       });
     },
+    changeInterval(value){
+      this.interval = value;
+    }
     
   },
 };
