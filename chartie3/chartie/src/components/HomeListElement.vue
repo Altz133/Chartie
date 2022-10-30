@@ -11,7 +11,9 @@
         <button @click="spliceFromStorage">X</button>
       </span>
       <span>
-        <button @click="klinesRequest">Active</button>
+
+      </span>
+      <span>
         <chart-component></chart-component>
       </span>
     </div>
@@ -19,7 +21,6 @@
 </template>
   
   <script>
-import binance from "../helpers/instance.js";
 import ChartComponent from "./ChartComponent.vue";
 export default {
   components: { ChartComponent },
@@ -30,14 +31,7 @@ export default {
         name: this.name,
       });
     },
-    klinesRequest() {
-      binance.klines("BTCUSDT", "1m").then((response) => {
-        const allItems = response.data;
-        console.log(allItems);
-        const total = allItems.length;
-        console.log(total);
-      });
-    },
+    
   },
 };
 </script>

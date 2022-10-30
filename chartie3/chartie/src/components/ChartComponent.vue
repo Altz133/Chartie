@@ -1,50 +1,45 @@
 <template>
-  <Line
-    :chart-options="chartOptions"
-    :chart-data="chartData"
-    :chart-id="chartId"
-    :dataset-id-key="datasetIdKey"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :width="width"
-    :height="height"
-  />
-</template>
-
-<script>
-import { tSImportEqualsDeclaration } from "@babel/types";
-import { Line } from "vue-chartjs";
-
-export default {
-  components: { Line },
-  props: {
-    label: {
-      type: String,
+    <Line :chart-data="chartData" />
+  </template>
+  
+  <script>
+  // DataPage.vue
+  import { Line } from 'vue-chartjs'
+  import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js'
+  import binance from '../helpers/instance.js'
+  ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement)
+  
+  export default {
+    name: 'LineChart',
+    components: { Line },
+    data() {
+      return {
+        chartData: {
+          labels: [],
+          datasets: [
+            {
+              label: 'coin placeholder',
+              backgroundColor: '#f87979',
+              data: [],
+            }
+          ]
+        }
+      }
     },
-    chartData: {
-      type: Array,
+    mounted(){
+      binance.klines("BTCUSDT", "1m").then((response) => {
+        const allItems = response.data;
+        console.log(allItems);
+        const total = allItems.length;
+        console.log(total);
+        for(let i = 0; i < total; i++)
+            {
+                this.chartData.datasets[0].data.push(allItems[i][0])
+                this.chartData.labels.push(allItems[i][0])
+            }
+       
+      });
     },
-    options: {
-      type: Object,
-    },
-  },
-  mounted() {
-    const price = this.chartData.map((p) => p.total).reverse();
-
-    this.renderChart({
-      labels: dates,
-      datasets: [
-        {
-          label: this.label,
-          data: tSImportEqualsDeclaration,
-        },
-        this.options,
-      ],
-    });
-  },
-};
-</script>
-
-<style>
-</style>
+    }
+  
+  </script>
