@@ -8,4 +8,7 @@ export default {
         };
         state.coins.push(newItem);
     },
+    clearStorage(state) {
+        state.coins = []
+    }
 }

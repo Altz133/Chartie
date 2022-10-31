@@ -47,6 +47,9 @@ export default {
         this.loaded = true
       });
     },
+    unmounted(){
+      this.$store.dispatch("clearStorage")
+    }
 };
 </script>
 

@@ -6,21 +6,22 @@
   
   <script>
   import { Line } from 'vue-chartjs'
-  import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js'
+  import { Chart as ChartJS, Title, Tooltip, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js'
   import binance from '../helpers/instance.js'
-  ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale, PointElement)
-  
+  ChartJS.register(Title, Tooltip, LineElement, CategoryScale, LinearScale, PointElement)
+
   export default {
     name: 'LineChart',
     components: { Line },
     props:['coinName','interval'],
     data: () => ({
+    
     loaded: false,
         chartData: {
           labels: [],
           datasets: [
             {
-              label: 'coin placeholder',
+              label: "price",
               backgroundColor: '#f87979',
               data: [],
             }

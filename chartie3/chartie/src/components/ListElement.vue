@@ -27,9 +27,20 @@ export default {
       return 0;
     },
     add() {
+      const data = this.$store.getters["UserCoins/getCoins"];
+      for(let i=0 ; i < data.length; i++)
+      {
+        if(this.id == data[i].id)
+        {
+          alert("Coin already exist in Home View")
+          return;
+        }
+      }
       this.$store.dispatch("UserCoins/AddToUsersCoinList", {
         id: this.id,
       });
+      
+      
     },
   },
 };
