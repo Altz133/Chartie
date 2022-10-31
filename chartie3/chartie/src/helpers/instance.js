@@ -26,7 +26,4 @@ export default {
       limit: 150,
     }
   }),
-  time: () => instance({
-    method:'get',
-    url:'/api/v3/time'  })
 }
