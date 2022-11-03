@@ -9,7 +9,10 @@
           <router-link to="/news">News</router-link>
         </li>
         <li>
-          <router-link to="/coins">List of Coins</router-link>
+          <router-link to="/coins">Cryptocurrencies</router-link>
+        </li>
+        <li>
+          <router-link to="/stock">GPW archive</router-link>
         </li>
       </ul>
     </nav>

@@ -13,14 +13,14 @@ export default {
     method: 'get',
     url: '/financelayer/news',
     params: {
-        date:"thismonth",
-        fallback: "off",
-        sort:"desc",
-        limit: 15,
-        sources:"-barrons.com",
-        tags:"-Healthcare",
-        keywords:"crypto, stockmarket, tesla, binance",
-        tickers: "-sva"
+      date: "thismonth",
+      fallback: "off",
+      sort: "desc",
+      limit: 15,
+      sources: "-bloomberg.com",
+      tags: "-Healthcare",
+      keywords: "crypto, stockmarket, tesla, binance",
+      tickers: "-sva"
     }
   }),
 
