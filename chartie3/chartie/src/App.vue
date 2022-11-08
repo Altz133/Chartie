@@ -26,6 +26,20 @@
     <TheNavigation></TheNavigation>
   </div>
   <router-view></router-view>
+  <footer class="text-center text-white" style="background-color: #3f51b5">
+    <section class="mb-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
+            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
+            sequi voluptate quas.
+          </p>
+        </div>
+      </div>
+    </section>
+  </footer>
 </template>
 
 <script>
