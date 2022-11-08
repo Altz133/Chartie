@@ -1,7 +1,7 @@
 <template>
     <p v-if="!loaded">Loading... </p>
-    <Line v-if="loaded" :chart-data="chartData" />
-    <button @click="LoadChart">Reaload</button>
+    <Line :chart-data="chartData" />
+    <button @click="LoadChart">Reload</button>
 </template>
   
   <script>
@@ -31,16 +31,17 @@
       methods:{
         async LoadChart(){
           this.loaded = false;
-          this.chartData.labels = []
-          this.chartData.datasets[0].data = []
+
        binance.klines(this.coinName, this.interval).then((response) => {
         const allItems = response.data;
         const total = allItems.length;
+        // this.chartData.labels = []
+        // this.chartData.datasets[0].data = []
         for(let i = 0; i < total; i++)
             {
-                this.chartData.datasets[0].data.push(allItems[i][1])
+                this.chartData.datasets[0].data[i] = allItems[i][1]
                 let time = new Date(allItems[i][0])
-                this.chartData.labels.push(time.toLocaleString())
+                this.chartData.labels[i] = time.toLocaleString()
             }
        this.loaded = true;
       });
