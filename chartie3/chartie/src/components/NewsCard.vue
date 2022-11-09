@@ -1,26 +1,31 @@
 <template>
-<li>
-    <div>
-        <h3>{{ title }}</h3>
-        <h4>{{ description }}</h4>
-        <a :href=url>Link to the article!</a>
-        <li>{{ date }}</li>
-        <p>Source: {{ source }}</p>
+  <li>
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          {{ date }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ title }}</h5>
+          <p class="card-text">{{ description }}</p>
+          <p class="card-text">Source: {{ source }}</p>
+          <a :href="url" class="btn btn-primary"> Visit the Article!</a>
+        </div>
+      </div>
     </div>
-</li>
+  </li>
 </template>
 <script>
-export default{
-    props:["id","title","description", "url","date","source"],
-    data(){
-        return{
-
-        }
-    }
-}
+export default {
+  props: ["id", "title", "description", "url", "date", "source"],
+  data() {
+    return {};
+  },
+};
 </script>
 <style scoped>
 li {
   list-style: none;
+  margin: 30px;
 }
 </style>

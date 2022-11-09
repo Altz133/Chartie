@@ -1,5 +1,4 @@
 <template>
- <h3>Welcome</h3>
   <ul class="list-group">
     <home-list-element
       v-for="item in userCoinStorage"

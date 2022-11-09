@@ -30,22 +30,7 @@ const routes = [
 
 let router = createRouter({
   history: createWebHistory(),
+  linkActiveClass: 'active-link',
   routes,
 })
-// const router = createRouter({
-//   history: createWebHistory(),
-//   router: [
-//     {
-//       path: '/',
-//       name: 'home',
-//       component: HomeView
-//     },
-//     {
-//       name: 'news',
-//       path: '/news',
-//       component: NewsView
-//     }
-//   ]
-// });
-
 export default router;
