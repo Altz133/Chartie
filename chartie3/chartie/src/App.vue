@@ -19,9 +19,7 @@
   <div class="wrapper">
     <TheNavigation></TheNavigation>
   </div>
-  <keep-alive>
-    <router-view></router-view>
-  </keep-alive>
+  <router-view></router-view>
   <the-footer></the-footer>
 </template>
 <script>

@@ -16,6 +16,10 @@ export default {
     },
     spliceFromStorage(context, payload) {
         context.commit('spliceCoin', payload)
+    },
+    changeInterval(context, payload) {
+        context.commit('updateInterval', payload)
     }
+
 
 }

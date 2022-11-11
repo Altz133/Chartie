@@ -19,48 +19,11 @@
     <span>
       <keep-alive>
         <chart-component
+          :coinId="id"
           :coinName="name"
-          :interval="interval"
-          ref="chart"
+          :coinInterval="interval"
         ></chart-component>
       </keep-alive>
-    </span>
-    <span>
-      <button
-        class="button is-info is-outlined"
-        :class="{ active: isActive == '1s' }"
-        @click="changeInterval('1s')"
-      >
-        1s
-      </button>
-      <button
-        class="button is-info is-outlined"
-        :class="{ active: isActive == '1m' }"
-        @click="changeInterval('1m')"
-      >
-        1m
-      </button>
-      <button
-        class="button is-info is-outlined"
-        :class="{ active: isActive == '1h' }"
-        @click="changeInterval('1h')"
-      >
-        1h
-      </button>
-      <button
-        class="button is-info is-outlined"
-        :class="{ active: isActive == '1d' }"
-        @click="changeInterval('1d')"
-      >
-        1d
-      </button>
-      <button
-        class="button is-info is-outlined"
-        :class="{ active: isActive == '1w' }"
-        @click="changeInterval('1w')"
-      >
-        1w
-      </button>
     </span>
   </li>
 </template>
@@ -70,23 +33,23 @@ import ChartComponent from "./ChartComponent.vue";
 export default {
   data() {
     return {
-      interval: "",
-      isActive: "",
+      // interval: "",
+      // isActive: "",
     };
   },
   components: { ChartComponent },
-  props: ["id", "name", "price"],
+  props: ["id", "name", "price", "interval"],
   methods: {
     spliceFromStorage() {
       this.$store.dispatch("UserCoins/spliceFromStorage", {
         name: this.name,
       });
     },
-    changeInterval(value) {
-      this.$refs.chart.LoadChart();
-      this.interval = value;
-      this.isActive = value;
-    },
+    // changeInterval(value) {
+    //   this.$refs.chart.LoadChart();
+    //   this.interval = value;
+    //   this.isActive = value;
+    // },
   },
 };
 </script>
@@ -98,9 +61,7 @@ li {
 span {
   padding: 3px;
 }
-.active {
-  text-decoration: underline;
-}
+
 .coinPrice {
   margin-left: 30px;
 }

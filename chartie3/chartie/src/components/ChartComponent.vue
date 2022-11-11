@@ -4,6 +4,43 @@
     <Line :chart-data="chartData" :styles="myStyles" />
   </keep-alive>
   <button class="button" @click="LoadChart">Reload</button>
+  <span>
+    <button
+      class="button is-info is-outlined"
+      :class="{ active: coinInterval == '1s' }"
+      @click="changeInterval('1s')"
+    >
+      1s
+    </button>
+    <button
+      class="button is-info is-outlined"
+      :class="{ active: coinInterval == '1m' }"
+      @click="changeInterval('1m')"
+    >
+      1m
+    </button>
+    <button
+      class="button is-info is-outlined"
+      :class="{ active: coinInterval == '1h' }"
+      @click="changeInterval('1h')"
+    >
+      1h
+    </button>
+    <button
+      class="button is-info is-outlined"
+      :class="{ active: coinInterval == '1d' }"
+      @click="changeInterval('1d')"
+    >
+      1d
+    </button>
+    <button
+      class="button is-info is-outlined"
+      :class="{ active: coinInterval == '1w' }"
+      @click="changeInterval('1w')"
+    >
+      1w
+    </button>
+  </span>
 </template>
 <script>
 import { Line } from "vue-chartjs";
@@ -29,11 +66,12 @@ ChartJS.register(
 export default {
   name: "LineChart",
   components: { Line },
-  props: ["coinName", "interval"],
+  props: ["coinId", "coinName", "coinInterval"],
   data: () => ({
     gradient: null,
     loaded: false,
     responsive: false,
+    isActive: "1h",
     chartData: {
       labels: [],
       datasets: [
@@ -56,8 +94,8 @@ export default {
     },
   },
   methods: {
-    async LoadChart() {
-      binance.klines(this.coinName, this.interval).then((response) => {
+    async LoadChart(coinName, interval) {
+      binance.klines(coinName, interval).then((response) => {
         const allItems = response.data;
         const total = allItems.length;
         // this.chartData.labels = []
@@ -70,9 +108,16 @@ export default {
         this.loaded = true;
       });
     },
+    changeInterval(newInterval) {
+      this.$store.dispatch("UserCoins/changeInterval", {
+        id: this.coinName,
+        interval: newInterval,
+      });
+      this.LoadChart(this.coinName, newInterval);
+    },
   },
   created() {
-    this.LoadChart();
+    this.LoadChart(this.coinName, this.coinInterval);
   },
 };
 </script>
@@ -82,5 +127,8 @@ export default {
 .button:hover {
   background-color: rgb(52, 152, 96);
   color: white;
+}
+.active {
+  text-decoration: underline;
 }
 </style>

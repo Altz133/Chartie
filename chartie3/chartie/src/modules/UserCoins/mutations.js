@@ -3,10 +3,12 @@
 export default {
     pushCoinToUserCoin(state, payload) {
         const coin = payload;
+        const interval = "1h"
         const newItem = {
             id: coin.id,
             name: coin.name,
             price: coin.price,
+            interval: interval,
         }
         state.items.push(newItem);
     },
@@ -24,5 +26,11 @@ export default {
         const X = payload.name
         const index = state.items.findIndex(coin => coin.name === X);
         state.items.splice(index, 1)
+    },
+    updateInterval(state, payload) {
+        const id = payload.id
+        const interval = payload.interval
+        const index = state.items.findIndex(coin => coin.name === id)
+        state.items[index].interval = interval;
     }
 }

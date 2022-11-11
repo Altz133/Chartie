@@ -8,6 +8,7 @@
         :key="item.id"
         :name="item.name"
         :price="item.price"
+        :interval="item.interval"
       ></home-list-element>
     </keep-alive>
   </ul>
