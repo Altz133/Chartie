@@ -11,7 +11,9 @@
           />
         </div>
         <li class="nav-item">
-          <router-link class="nav-link mt-2" to="/">Home</router-link>
+          <KeepAlive>
+            <router-link class="nav-link mt-2" to="/">Home</router-link>
+          </KeepAlive>
         </li>
         <li class="nav-item">
           <router-link class="nav-link mt-2" to="/news">News</router-link>

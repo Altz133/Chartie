@@ -1,12 +1,15 @@
 <template>
-  <ul class="list-group">
-    <home-list-element
-      v-for="item in userCoinStorage"
-      :id="item.id"
-      :key="item.id"
-      :name="item.name"
-      :price="item.price"
-    ></home-list-element>
+  <ul class="columns is-multiline">
+    <keep-alive>
+      <home-list-element
+        v-for="item in userCoinStorage"
+        class="element"
+        :id="item.id"
+        :key="item.id"
+        :name="item.name"
+        :price="item.price"
+      ></home-list-element>
+    </keep-alive>
   </ul>
 </template>
 
@@ -16,6 +19,7 @@ export default {
   data() {
     return {
       timer: null,
+      counter: 4,
     };
   },
   components: { HomeListElement },
@@ -36,7 +40,7 @@ export default {
       }, 5000);
     },
   },
-  mounted() {
+  beforeMount() {
     this.update();
   },
   unmounted() {
@@ -44,5 +48,12 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
+.element {
+  border: cornflowerblue 1px solid;
+  border-radius: 10px;
+}
+.columns {
+  margin-top: 1px;
+}
 </style>

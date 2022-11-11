@@ -10,7 +10,7 @@ import FinanceNews from '../news/index.js'
 const store = createStore({
     plugins: [
         createPersistedState({
-            paths: ['UserCoins','FinanceNews'],
+            paths: ['UserCoins', 'FinanceNews'],
         }),
     ],
     modules: {

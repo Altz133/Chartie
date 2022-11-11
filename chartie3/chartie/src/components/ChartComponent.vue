@@ -1,14 +1,9 @@
 <template>
   <p v-if="!loaded">Loading...</p>
-  <Line
-    :chart-data="chartData"
-    :chart-options="config"
-    :styles="styles"
-    :height="400"
-    :width="500"
-  />
-  <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-  <button @click="LoadChart">Reload</button>
+  <keep-alive>
+    <Line :chart-data="chartData" :styles="myStyles" />
+  </keep-alive>
+  <button class="button" @click="LoadChart">Reload</button>
 </template>
 <script>
 import { Line } from "vue-chartjs";
@@ -38,6 +33,7 @@ export default {
   data: () => ({
     gradient: null,
     loaded: false,
+    responsive: false,
     chartData: {
       labels: [],
       datasets: [
@@ -45,13 +41,20 @@ export default {
           label: "price",
           backgroundColor: "transparent",
           borderColor: "rgba(1, 116, 188, 0.50)",
-          pointBackgroundColor: "rgba(171, 71, 188, 1)",
+          pointBackgroundColor: "red",
           data: [],
         },
       ],
     },
   }),
-
+  computed: {
+    myStyles() {
+      return {
+        height: "450px",
+        width: "450px",
+      };
+    },
+  },
   methods: {
     async LoadChart() {
       binance.klines(this.coinName, this.interval).then((response) => {
@@ -68,8 +71,16 @@ export default {
       });
     },
   },
-  mounted() {
+  created() {
     this.LoadChart();
   },
 };
 </script>
+<style scoped>
+.button,
+.button:active,
+.button:hover {
+  background-color: rgb(52, 152, 96);
+  color: white;
+}
+</style>
