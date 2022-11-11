@@ -70,7 +70,7 @@ export default {
   data: () => ({
     gradient: null,
     loaded: false,
-    responsive: false,
+
     isActive: "1h",
     chartData: {
       labels: [],
@@ -109,6 +109,7 @@ export default {
       });
     },
     changeInterval(newInterval) {
+      this.loaded = false;
       this.$store.dispatch("UserCoins/changeInterval", {
         id: this.coinName,
         interval: newInterval,

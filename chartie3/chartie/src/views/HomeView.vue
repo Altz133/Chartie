@@ -1,9 +1,9 @@
 <template>
-  <ul class="columns is-multiline">
+  <ul v-auto-animate class="columns is-multiline">
     <keep-alive>
       <home-list-element
         v-for="item in userCoinStorage"
-        class="element"
+        class="box"
         :id="item.id"
         :key="item.id"
         :name="item.name"
@@ -50,11 +50,11 @@ export default {
 };
 </script>
 <style scoped>
-.element {
-  border: cornflowerblue 1px solid;
-  border-radius: 10px;
-}
 .columns {
   margin-top: 1px;
+}
+.box {
+  margin: 3px;
+  height: 600px;
 }
 </style>

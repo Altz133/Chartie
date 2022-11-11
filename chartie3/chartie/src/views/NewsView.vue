@@ -9,7 +9,7 @@
       <button @click="loadNews" class="btn btn-primary">Load News!</button>
     </div>
 
-    <ul>
+    <ul v-auto-animate>
       <p v-if="!loaded">Loading...</p>
       <news-card
         v-for="item in getNews"
@@ -67,5 +67,8 @@ export default {
 <style scoped>
 .new {
   padding: 30px;
+}
+.container {
+  margin-top: 3%;
 }
 </style>

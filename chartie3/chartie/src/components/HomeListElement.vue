@@ -61,8 +61,4 @@ li {
 span {
   padding: 3px;
 }
-
-.coinPrice {
-  margin-left: 30px;
-}
 </style>

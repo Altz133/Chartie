@@ -1,15 +1,17 @@
 <template>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <div class="wrapper">
-      <span>
-        {{ name }}
-      </span>
-      <span class="coinPrice">
-        {{ price }}
-      </span>
-      <span>
-        <button @click="add">add</button>
-      </span>
+  <li class="column is-one-third">
+    <div class="box">
+      <div class="d-flex">
+        <span class="p-2 is-size-4">
+          {{ name }}
+        </span>
+        <span class="coinPrice p-2 is-size-4">
+          {{ price }}
+        </span>
+        <span class="ml-auto p-2">
+          <button class="button is-secondary" @click="add">add</button>
+        </span>
+      </div>
     </div>
   </li>
 </template>
@@ -28,19 +30,15 @@ export default {
     },
     add() {
       const data = this.$store.getters["UserCoins/getCoins"];
-      for(let i=0 ; i < data.length; i++)
-      {
-        if(this.id == data[i].id)
-        {
-          alert("Coin already exist in Home View")
+      for (let i = 0; i < data.length; i++) {
+        if (this.id == data[i].id) {
+          alert("Coin already exist in Home View");
           return;
         }
       }
       this.$store.dispatch("UserCoins/AddToUsersCoinList", {
         id: this.id,
       });
-      
-      
     },
   },
 };
@@ -52,5 +50,9 @@ li {
 }
 span {
   padding: 3px;
+}
+.box {
+  width: 260;
+  height: 80;
 }
 </style>

@@ -1,18 +1,10 @@
 <template>
   <footer
-    class="text-center text-lg-start text-dark"
+    class="text-center text-lg-start text-dark bg-success bg-gradient"
     style="background-color: #eceff1"
   >
     <!-- Section: Social media -->
-    <section
-      class="
-        d-flex
-        justify-content-between
-        p-4
-        text-white
-        bg-success bg-gradient
-      "
-    >
+    <section class="d-flex justify-content-between p-4 text-white">
       <!-- Left -->
       <div class="me-5">
         <span>Thanks for visit :)</span>

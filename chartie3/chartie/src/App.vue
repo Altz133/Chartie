@@ -20,7 +20,7 @@
     <TheNavigation></TheNavigation>
   </div>
   <router-view></router-view>
-  <the-footer></the-footer>
+  <the-footer class="footer"></the-footer>
 </template>
 <script>
 import TheNavigation from "./router/TheNavigation.vue";
@@ -34,26 +34,9 @@ export default {
 };
 </script>
 <style scoped>
-#top,
-#left,
-#right {
-  position: fixed;
-}
-#left,
-#right {
-  top: 0;
+.footer {
+  background-color: #eceff1;
   bottom: 0;
-  width: 15px;
-}
-#left {
-  left: 0;
-}
-#right {
-  right: 0;
-}
-
-#top,
-#top {
-  top: 0;
+  width: 100%;
 }
 </style>

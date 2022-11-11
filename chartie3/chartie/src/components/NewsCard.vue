@@ -1,16 +1,14 @@
 <template>
   <li>
-    <div class="container">
-      <div class="card">
-        <div class="card-header">
-          {{ date }}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ title }}</h5>
-          <p class="card-text">{{ description }}</p>
-          <p class="card-text">Source: {{ source }}</p>
-          <a :href="url" class="btn btn-primary"> Visit the Article!</a>
-        </div>
+    <div class="card">
+      <div class="card-header">
+        {{ date }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ title }}</h5>
+        <p class="card-text">{{ description }}</p>
+        <p class="card-text">Source: {{ source }}</p>
+        <a :href="url" class="btn btn-primary"> Visit the Article!</a>
       </div>
     </div>
   </li>

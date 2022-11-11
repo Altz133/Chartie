@@ -1,10 +1,17 @@
 <template>
-  <form @submit.prevent="submitForm">
-    <input type="text" v-model="search" placeholder="Search for coins..."/>
-
+  <form
+    @submit.prevent="submitForm"
+    class="is-justify-content-center is-align-self-center"
+  >
+    <input
+      type="text"
+      v-model="search"
+      class="search is-size-4"
+      placeholder="Search for coins..."
+    />
   </form>
   <p v-if="!loaded">Loading...</p>
-  <ul class="list-group">
+  <ul class="columns is-multiline">
     <list-element
       v-for="item in getCoinsBySymbol(search)"
       :id="item.id"
@@ -31,8 +38,8 @@ export default {
     ...mapGetters(["getCoinsBySymbol", "getLength"]),
   },
 
-  async mounted(){
-      this.loaded= false,
+  async mounted() {
+    (this.loaded = false),
       binance.tickerPrice().then((response) => {
         const allItems = response.data;
         const total = allItems.length;
@@ -44,17 +51,20 @@ export default {
             price: allItems[i].price,
           });
         }
-        this.loaded = true
+        this.loaded = true;
       });
-    },
-    unmounted(){
-      this.$store.dispatch("clearStorage")
-    }
+  },
+  unmounted() {
+    this.$store.dispatch("clearStorage");
+  },
 };
 </script>
 
 <style scoped>
 .invissable {
   display: none;
+}
+.search {
+  margin: 20px 43% 20px;
 }
 </style>
