@@ -23,7 +23,7 @@ export default {
     params: {
       symbol: symbol,
       interval: interval,
-      limit: 100,
+      limit: 150,
     }
   }),
 }
