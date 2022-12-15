@@ -45,7 +45,7 @@
       </select>
     </div>
     <a
-      v-if="year <= 2013"
+      v-if="year <= 2013 || year === null"
       :href="
         'https://www.gpw.pl/pub/GPW/statystyki/statystyki_miesieczne/' +
         year +
@@ -65,7 +65,7 @@
         month +
         '_GPW.xls'
       "
-      class="is-button button is-info submit"
+      class="button is-info submit"
     >
       Download
     </a>

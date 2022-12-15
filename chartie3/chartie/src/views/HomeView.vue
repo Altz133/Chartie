@@ -1,4 +1,7 @@
 <template>
+  <div class="idk" v-if="empty">
+    <p>Go to "Crypto Coins" and add some cryptocurrencies first!</p>
+  </div>
   <ul v-auto-animate class="columns is-multiline">
     <keep-alive>
       <home-list-element
@@ -21,6 +24,7 @@ export default {
     return {
       timer: null,
       counter: 4,
+      empty: true,
     };
   },
   components: { HomeListElement },
@@ -34,8 +38,10 @@ export default {
       this.timer = setInterval(() => {
         if (this.$store.getters["UserCoins/getCoins"].length > 0) {
           this.$store.dispatch("UserCoins/updateStorage");
-          console.log("update");
+          this.empty = false;
+          console.log("price update");
         } else {
+          this.empty = true;
           console.log("store is empty - nothing to update");
         }
       }, 5000);
@@ -43,6 +49,9 @@ export default {
   },
   beforeMount() {
     this.update();
+    if (this.$store.getters["UserCoins/getCoins"].length > 0) {
+      this.empty = false;
+    }
   },
   unmounted() {
     clearInterval(this.timer);
@@ -56,5 +65,13 @@ export default {
 .box {
   margin: 3px;
   height: 600px;
+}
+.idk {
+  width: 100%;
+  height: 300px;
+}
+p {
+  margin: 15% 30%;
+  font-size: 24px;
 }
 </style>

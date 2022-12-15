@@ -16,10 +16,10 @@ export default {
       date: "thismonth",
       fallback: "off",
       sort: "desc",
-      limit: 15,
+      limit: 10,
       sources: "-bloomberg.com",
       tags: "-Healthcare",
-      keywords: "crypto, stockmarket, tesla, binance",
+      keywords: "Crypto, Stock",
       tickers: "-sva"
     }
   }),

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="card text-center new">
       <h4 class="card-title">Welcome to News Page!</h4>
-      <h5 class="card-text">
+      <h5 class="card-text header">
         Here you can study the most recent topics about buisness world. Let us
         help you chose most important articles that would help you invest!
       </h5>
@@ -66,9 +66,16 @@ export default {
 
 <style scoped>
 .new {
-  padding: 30px;
+  padding: 20px;
 }
 .container {
-  margin-top: 3%;
+  margin-top: 30px;
+}
+.btn {
+  width: 300px;
+  margin: auto;
+}
+.header {
+  margin-bottom: 20px;
 }
 </style>

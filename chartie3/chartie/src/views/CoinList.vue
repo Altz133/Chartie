@@ -10,7 +10,9 @@
       placeholder="Search for coins..."
     />
   </form>
-  <p v-if="!loaded">Loading...</p>
+  <div v-if="!loaded" class="idk">
+    <h1>Loading...</h1>
+  </div>
   <ul class="columns is-multiline">
     <list-element
       v-for="item in getCoinsBySymbol(search)"
@@ -66,5 +68,15 @@ export default {
 }
 .search {
   margin: 20px 43% 20px;
+}
+.idk {
+  height: 500px;
+  widows: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+h1 {
+  margin: 5% 50%;
+  font-size: 24px;
 }
 </style>

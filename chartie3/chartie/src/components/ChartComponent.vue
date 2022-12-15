@@ -3,7 +3,9 @@
   <keep-alive>
     <Line :chart-data="chartData" :styles="myStyles" />
   </keep-alive>
-  <button class="button" @click="LoadChart">Reload</button>
+  <button class="button" @click="LoadChart(coinName, coinInterval)">
+    Reload
+  </button>
   <span>
     <button
       class="button is-info is-outlined"
@@ -70,8 +72,7 @@ export default {
   data: () => ({
     gradient: null,
     loaded: false,
-
-    isActive: "1h",
+    isActive: "coinInverval",
     chartData: {
       labels: [],
       datasets: [
@@ -88,7 +89,6 @@ export default {
   computed: {
     myStyles() {
       return {
-        height: "450px",
         width: "450px",
       };
     },
@@ -98,8 +98,6 @@ export default {
       binance.klines(coinName, interval).then((response) => {
         const allItems = response.data;
         const total = allItems.length;
-        // this.chartData.labels = []
-        // this.chartData.datasets[0].data = []
         for (let i = 0; i < total; i++) {
           this.chartData.datasets[0].data[i] = allItems[i][1];
           let time = new Date(allItems[i][0]);
@@ -114,6 +112,7 @@ export default {
         id: this.coinName,
         interval: newInterval,
       });
+
       this.LoadChart(this.coinName, newInterval);
     },
   },
