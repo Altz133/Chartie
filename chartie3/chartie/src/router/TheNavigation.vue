@@ -1,15 +1,16 @@
 <template>
   <nav id="nav" class="navbar navbar-expand-sm bg-success bg-gradient">
     <div class="container-fluid">
-      <ul class="navbar-nav">
-        <div class="navbar-brand d-block">
-          <img
-            alt="Chartie Logo"
-            src="@/assets/rysunek.svg"
-            width="150"
-            height="150"
-          />
-        </div>
+      <div class="navbar-brand d-block">
+        <img
+          alt="Chartie Logo"
+          src="@/assets/rysunek.svg"
+          width="150"
+          height="150"
+          class="col"
+        />
+      </div>
+      <ul class="navbar-nav col">
         <li class="nav-item">
           <KeepAlive>
             <router-link class="nav-link mt-2" to="/">Home</router-link>
