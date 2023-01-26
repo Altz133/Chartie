@@ -55,10 +55,13 @@ export default {
 </script>
   
   <style scoped>
-li {
+.column{
   list-style: none;
+  max-width: 50vw;
+  
 }
 span {
   padding: 3px;
 }
+
 </style>

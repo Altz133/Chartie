@@ -8,9 +8,9 @@
       </h5>
       <button @click="loadNews" class="btn btn-primary">Load News!</button>
     </div>
-
+    
     <ul v-auto-animate>
-      <p v-if="!loaded">Loading...</p>
+      <p v-if="!loaded" class="idk">Loading...</p>
       <news-card
         v-for="item in getNews"
         :id="item.id"
@@ -23,6 +23,7 @@
       ></news-card>
     </ul>
   </div>
+  <div class="idk" v-if="loaded"></div>
 </template>
 
 <script>
@@ -77,5 +78,9 @@ export default {
 }
 .header {
   margin-bottom: 20px;
+}
+.idk {
+  width: 100%;
+  height: 150px;
 }
 </style>

@@ -15,7 +15,8 @@ export default {
     url: '/api/v3/ticker/price',
     params: {
       symbols: JSON.stringify(symbols),
-    }
+    },
+
   }),
   klines: (symbol, interval) => instance({
     method: 'get',
