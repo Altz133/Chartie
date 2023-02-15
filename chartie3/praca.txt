@@ -1,3 +1,0 @@
-https://towardsdatascience.com/should-you-use-includes-or-filter-to-check-if-an-array-contains-an-item-1a8365dfc363
-
-https://pusher.com/tutorials/chart-vuejs/#pusher-setup
