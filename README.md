@@ -1,4 +1,6 @@
-# chartie
+# Chartie
+## Description
+Chartie was created to as an example of minimalistic cryptocurrency rates viewer. It was my frist project created in Vue 3 to try it out. 
 
 ## Project setup
 ```
