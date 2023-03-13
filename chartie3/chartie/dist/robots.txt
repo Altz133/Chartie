@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /stock/
-Disallow: /coins/
-Disallow: /coins/

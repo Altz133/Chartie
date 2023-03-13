@@ -12,19 +12,19 @@ My first bigger vue-based web application made for tracking cryptocurrency price
 
 ##### Screen for daily news brought by API Layer/ Finance News API
 
-![NewsTab](/src/images/NewsScreen.png)
+![NewsTab](/src/images/NewsView.png)
 
 ### List of Coins
 
 ##### List of every coin listed by Binance API
 
-![CoinList](/src/images/CryptoList.png)
+![CoinList](/src/images/CoinList.png)
 
 ### GPW
 
 ##### Form for downloading a GPW monthly report
 
-![GPW](/src/images/StockScreen.png)
+![GPW](/src/images/GPWView.png)
 
 ## Project setup
 
