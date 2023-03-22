@@ -8,7 +8,7 @@
       </h5>
       <button @click="loadNews" class="btn btn-primary">Load News!</button>
     </div>
-    
+
     <ul v-auto-animate>
       <p v-if="!loaded" class="idk">Loading...</p>
       <news-card
@@ -23,7 +23,7 @@
       ></news-card>
     </ul>
   </div>
-  <div class="idk" v-if="loaded"></div>
+  <div class="idk" v-if="!loaded"></div>
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default {
       return this.$store.getters["FinanceNews/getNews"];
     },
   },
-  
+
   methods: {
     async loadNews() {
       (this.loaded = false), this.$store.dispatch("FinanceNews/clearStorage");
@@ -82,6 +82,6 @@ export default {
 }
 .idk {
   width: 100%;
-  height: 150px;
+  height: 400px;
 }
 </style>

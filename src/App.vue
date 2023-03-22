@@ -19,8 +19,10 @@
   <div class="wrapper">
     <TheNavigation></TheNavigation>
   </div>
-  <router-view></router-view>
-  <the-footer class="footer"></the-footer>
+  <div class="content-wrap">
+    <router-view></router-view>
+    <the-footer class="footer"></the-footer>
+  </div>
 </template>
 <script>
 import TheNavigation from "./router/TheNavigation.vue";
@@ -34,9 +36,15 @@ export default {
 };
 </script>
 <style scoped>
+.content-wrap {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 2.5rem;
+}
 .footer {
-  background-color: #eceff1;
+  position: absolute;
   bottom: 0;
   width: 100%;
+  height: 2.5rem;
 }
 </style>
